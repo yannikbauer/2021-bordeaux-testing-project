@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
-from logistic import iterate_f
+from logistic_map import iterate_f
 
 def plot_trajectory(n, r, x0, fname="single_trajectory.png"):
     """
@@ -16,7 +16,7 @@ def plot_trajectory(n, r, x0, fname="single_trajectory.png"):
     returns
         fig, ax (matplotlib objects)
     """
-    l = iterate_f(n, x0, r)
+    l = iterate_f(n, r, x0)
     fig, ax = plt.subplots(figsize=(10,5))
     ax.plot(list(range(n)), l)
     fig.suptitle('Logistic Function')
@@ -65,4 +65,4 @@ def plot_bifurcation(start, end, step, fname="bifurcation.png", it=100000,
 
 if __name__=="__main__":
     plot_trajectory(100, 3.6, 0.1)
-    plot_bifurcation(2.5, 4.2, 0.001)
+    plot_bifurcation(2.5, 4.2, 0.1, it=100)
