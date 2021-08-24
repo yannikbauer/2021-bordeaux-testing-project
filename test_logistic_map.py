@@ -16,4 +16,20 @@ def test_iterate_f(x, r, it, expected):
     output = iterate_f(it, x, r)
     assert np.all(np.isclose(np.array(output), np.array(expected)))
 
+
+def test_iterate_f_converge_fuzzing():
+    rand_state = np.random.RandomState(1333)
+    it = 100
+    r = 1.5
+    n = 1000
+    expected = 1/3
+
+    x0s = np.random.random(n)
+
+    l = []
+    for x in x0s:
+        vals = iterate_f(it, x, r)
+        l.append(vals[-1])
+
+    assert np.all(np.isclose(l, expected))
     
