@@ -6,16 +6,15 @@ def logistic_map(x, r):
     return y
 
 
-def iterate_f(x, r, it):
+def iterate_f(it, x, r):
     y = logistic_map(x, r)
     if it == 1:
         return [y]
     else:
-        return [y] + iterate_f(y, r, it-1)
+        return [y] + iterate_f(it-1, y, r)
 
 
-def iterate_f2(x, r, it):
-
+def iterate_f2(it, x, r):
     l = []
     y = x
     for i in range(it):
